@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-primary: #212191;
+    --brand-dark: #11115B;
+    --brand-accent: #FAFCFF;
+    --hero-orange: #E8845A;
+    --hero-peach: #D4956B;
+    --hero-lavender: #9B99E8;
+    --hero-light: #E8EEFF;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #FAFAFA;
+    color: #000;
+}
+
+.hero-gradient {
+    background:
+        radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232, 132, 90, 0.55) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(212, 149, 107, 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(155, 153, 232, 0.3) 0%, transparent 55%),
+        radial-gradient(ellipse 100% 80% at 50% 100%, rgba(232, 238, 255, 0.8) 0%, transparent 70%),
+        #FAFAFA;
+}
+
+.announcement-bar {
+    background: linear-gradient(90deg, #E8845A 0%, #D4956B 30%, #9B99E8 70%, #212191 100%);
+}
+
+.nav-blur {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(250, 250, 250, 0.85);
+}
+
+.partner-marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 35s linear infinite;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-in {
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
+.fade-in.in-view {
+    opacity: 1;
+}
+.slide-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.slide-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+.slide-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.slide-right.in-view {
+    opacity: 1;
+    transform: translateX(0);
+}
+.scale-in {
+    opacity: 0;
+    transform: scale(0.94);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.scale-in.in-view {
+    opacity: 1;
+    transform: scale(1);
+}
+
+@keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+@keyframes wiggleAround {
+    from {
+        transform: perspective(9cm) rotateY(350deg);
+    }
+
+    to {
+        transform: perspective(9cm) rotateY(335deg);
+    }
+}
+
+.wiggle-around {
+    animation: wiggleAround 2s ease-in-out infinite alternate;
+}
+
+/*define css variables*/
+:root {
+    --gradientColor1: #09c2c2;
+    --gradientColor1Darker: #119494;
+    --gradientColor2: #4449ff;
+    --gradientColor2Darker: #181fa8;
+}
+
+.grayscale-logo {
+    filter: grayscale(100%);
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, var(--gradientColor1) 0%, var(--gradientColor2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-color 0.5s ease;
+}
+
+.text-india {
+    background: linear-gradient(135deg, #fa7d00 0%, #FFFFFF 50%, #0a7b00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-color 0.5s ease;
+    filter: drop-shadow(0 0 3px #000);
+}
+
+.text-gradient:hover {
+    background: linear-gradient(0deg, var(--gradientColor1) 0%, var(--gradientColor2) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.bg-gradient {
+    background: linear-gradient(135deg, var(--gradientColor1Darker) 0%, var(--gradientColor2Darker) 100%);
+    transition: background-color 0.5s ease;
+    color: #fff;
+}
+
+.bg-gradient:hover {
+    background: linear-gradient(0deg, var(--gradientColor1Darker) 0%, var(--gradientColor2Darker) 100%);
+}
+
+.choropleth path {
+    @apply stroke-zinc-400 dark:stroke-zinc-600;
+    stroke-width: 1px;
+}
+
+.sankey path {
+    mix-blend-mode: normal !important;
+
+}
+
+.btn-accent {
+    @apply text-white bg-gradient font-bold py-2 px-4 rounded;
+}
+
+.btn-outline {
+    @apply dark:text-zinc-200;
+}

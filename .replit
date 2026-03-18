@@ -1,0 +1,41 @@
+modules = ["nodejs-20", "web", "python-3.12", "bash"]
+[agent]
+expertMode = true
+
+[nix]
+channel = "stable-25_05"
+
+[userenv]
+
+[userenv.shared]
+AUTH0_BASE_URL = "https://c57c826b-2a60-4b73-91e2-040a174763a3-00-2xavw46eewihn.spock.replit.dev"
+NEXT_PUBLIC_VERCEL_URL = "https://c57c826b-2a60-4b73-91e2-040a174763a3-00-2xavw46eewihn.spock.replit.dev"
+DATAHOSTING_URL = "https://sonic-app-prod-6njyx2yrkq-as.a.run.app"
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Start application"
+
+[[workflows.workflow]]
+name = "Start application"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "npm run dev"
+waitForPort = 5000
+
+[workflows.workflow.metadata]
+outputType = "webview"
+
+[[ports]]
+localPort = 5000
+externalPort = 80

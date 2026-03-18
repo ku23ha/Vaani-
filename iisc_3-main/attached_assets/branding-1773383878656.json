@@ -1,0 +1,136 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Matter",
+      "role": "body"
+    },
+    {
+      "family": "Season Mix",
+      "role": "heading"
+    }
+  ],
+  "colors": {
+    "primary": "#212191",
+    "accent": "#FAFCFF",
+    "background": "#FAFAFA",
+    "textPrimary": "#000000",
+    "link": "#11115B"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Matter",
+      "heading": "Season Mix"
+    },
+    "fontStacks": {
+      "heading": [
+        "Season Mix",
+        "sans-serif"
+      ],
+      "body": [
+        "ui-sans-serif",
+        "system-ui",
+        "sans-serif",
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Segoe UI Symbol",
+        "Noto Color Emoji"
+      ],
+      "paragraph": [
+        "Matter",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "72px",
+      "h2": "36px",
+      "body": "14px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {
+    "buttonPrimary": {
+      "background": "#FAFCFF",
+      "textColor": "#212191",
+      "borderRadius": "33554400px",
+      "borderRadiusCorners": {
+        "topLeft": "33554400px",
+        "topRight": "33554400px",
+        "bottomRight": "33554400px",
+        "bottomLeft": "33554400px"
+      },
+      "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(199, 210, 254, 0.8) 0px 0px 12px 0px inset"
+    },
+    "buttonSecondary": {
+      "background": "#131313",
+      "textColor": "#FFFFFF",
+      "borderRadius": "33554400px",
+      "borderRadiusCorners": {
+        "topLeft": "33554400px",
+        "topRight": "33554400px",
+        "bottomRight": "33554400px",
+        "bottomLeft": "33554400px"
+      },
+      "shadow": "rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgb(255, 255, 255) 0px 0px 12px 0px inset, rgba(0, 0, 0, 0.1) 0px 0px 2px 0px"
+    }
+  },
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "https://www.sarvam.ai/favicon.svg",
+    "ogImage": "https://www.sarvam.ai/assets/og-images/home-og.png",
+    "logoHref": "File saved at: attached_assets/logoHref.html",
+    "logoAlt": "Sarvam AI"
+  },
+  "__llm_logo_reasoning": {
+    "selectedIndex": 2,
+    "reasoning": "Selected #1 because it is visible, medium-sized, and links to the homepage with alt text matching the brand 'Sarvam AI'.",
+    "confidence": 0.95,
+    "source": "llm"
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": 2,
+      "text": "Conversational Agents",
+      "reasoning": "Button #5 has a vibrant blue background (#FAFCFF) and action-oriented text 'Conversational Agents', making it a strong candidate for the primary CTA."
+    },
+    "secondary": {
+      "index": 3,
+      "text": "Experience Sarvam",
+      "reasoning": "Button #4 has a dark background (#131313) and text 'Experience Sarvam', which complements the primary button without using the same color group."
+    },
+    "confidence": 0.9
+  },
+  "personality": {
+    "tone": "modern",
+    "energy": "medium",
+    "targetAudience": "technology professionals"
+  },
+  "designSystem": {
+    "framework": "tailwind",
+    "componentLibrary": ""
+  },
+  "confidence": {
+    "buttons": 0.9,
+    "colors": 0.9,
+    "overall": 0.9
+  },
+  "__llm_metadata": {
+    "logoSelection": {
+      "llmCalled": true,
+      "llmSucceeded": true,
+      "finalSource": "llm",
+      "rawLogoSelection": {
+        "selectedLogoIndex": 1,
+        "selectedLogoReasoning": "Selected #1 because it is visible, medium-sized, and links to the homepage with alt text matching the brand 'Sarvam AI'.",
+        "confidence": 0.95
+      }
+    },
+    "buttonClassification": {
+      "llmCalled": true,
+      "llmSucceeded": true
+    }
+  }
+}

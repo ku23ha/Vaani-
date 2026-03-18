@@ -1,0 +1,35 @@
+Act as an expert frontend developer and UI/UX designer. I want to completely revamp my current website's design to match a modern, premium fintech aesthetic, similar to the 'Paynext' Webflow template.
+
+Please analyze my existing codebase and apply the following sweeping updates:
+
+1. Global Design System & Theme:
+
+Color Palette: Use a deep, vibrant violet/purple as the primary brand color for the hero background, buttons, and accents. Use clean white and off-white/light gray for content section backgrounds.
+
+Typography: Implement a modern, geometric sans-serif font (like Inter, Plus Jakarta Sans, or similar Google Font). Ensure high contrast and readable font sizes.
+
+Styling: Use soft drop shadows on cards, rounded corners (border-radius), and smooth transition effects for hover states.
+
+2. Key Sections to Build/Update:
+
+Navbar: Clean, sticky top navigation with links (Home, About, Pricing, Blog, etc.) and a prominent 'Get In Touch' button.
+
+Hero Section: A dark purple background with a bold left-aligned headline ("Effortless Financial Solutions For A Digital World"), a subheadline, a 'Get Started Today' button, and a layout that accommodates a floating mobile app mockup on the right.
+
+Partner Logos: A horizontal strip of grayscale company logos below the hero.
+
+Services/Features Grid: A clean CSS grid layout displaying features (e.g., Digital Payments, Budget Tracking, Loan Management) with small icons and text. Include hover effects that lift the cards slightly.
+
+Workflow/Steps Section: A vertical or horizontal step-by-step guide (Sign Up -> Link Accounts -> Analyze -> Transact -> Optimize) with associated icons.
+
+Pricing: A 3-tier pricing table (Starter, Professional, Enterprise) with a Monthly/Yearly toggle switch. Highlight the middle 'Professional' plan.
+
+Blog/Insights: A responsive card grid displaying recent articles.
+
+3. Functional & CMS Requirements (Crucial):
+
+Dynamic Content: Do not hardcode the lists for 'Case Studies', 'Services', or 'Blog Posts'. Instead, set up a scalable architecture. Depending on my current stack, either create a structured data.json file to map over, or set up a simple CMS/Admin route so non-developers can easily add a 4th case study or a new blog post without touching the HTML.
+
+Responsiveness: Ensure every section is fully mobile-responsive, stacking cleanly on smaller screens.
+
+Please give me a step-by-step plan on how we will implement this, starting with updating the global CSS/Tailwind config, and then modifying the main page layout.

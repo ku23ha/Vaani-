@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="120" viewBox="0 0 320 120">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e88e5" />
+      <stop offset="100%" stop-color="#42a5f5" />
+    </linearGradient>
+  </defs>
+  <rect width="320" height="120" rx="18" fill="#0A0E1A" />
+  <text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="38" font-weight="700" fill="url(#grad)">MWire</text>
+  <text x="50%" y="78%" dominant-baseline="middle" text-anchor="middle" font-family="Inter, sans-serif" font-size="14" fill="rgba(255,255,255,0.65)">Labs</text>
+</svg>
