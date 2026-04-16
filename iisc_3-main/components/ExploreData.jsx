@@ -21,16 +21,6 @@ export function ExploreData({ data }) {
       style={{ background: 'transparent' }}
     >
       <Container>
-        {/* Vaani Quote Section */}
-        <div className="mb-12 p-8 rounded-2xl glass border border-white/10 backdrop-blur-sm bg-white/5">
-          <blockquote className="text-xl sm:text-2xl text-white/90 leading-relaxed italic">
-            <p className="mb-4">
-              "Project Vaani is one of the largest datasets of Indian dialects ever to exist. Upon completion, it will contain more than 150,000 hours of audio across all districts in India."
-            </p>
-            <footer className="text-white/60 text-sm">— Project VAANI, IISc & ARTPARK</footer>
-          </blockquote>
-        </div>
-
         {/* Section header */}
         <div
           ref={headRef}
@@ -54,8 +44,7 @@ export function ExploreData({ data }) {
           </div>
         </div>
 
-        {/* Voice Search Prompt */}
-        <VoiceSearchPrompt />
+        {/* Voice Search Prompt moved lower or kept here? */}
 
         {/* Map */}
         <div
@@ -72,6 +61,10 @@ export function ExploreData({ data }) {
 
         {/* Divider */}
         <WaveformDivider color="spectral" height={30} className="my-12" />
+
+        <div className="my-20">
+          <VoiceSearchPrompt />
+        </div>
 
         {/* Linguistic Gems */}
         <div

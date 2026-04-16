@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { Hero } from "../components/Hero";
 import { ArticlesSection } from "../components/ArticlesSection";
 import { Stats } from "../components/Stats";
+import EuphoniaSection from "../components/EuphoniaSection";
 import { ExploreData } from "../components/ExploreData";
 import { Team } from "../components/Team";
 import { Partners } from "../components/Partners";
@@ -13,6 +14,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import IndicTransition from '../components/IndicTransition';
 import SectionDivider from '../components/SectionDivider';
 import AIPlayground from '../components/AILab/AIPlayground';
+import { VisionStatement } from '../components/VisionStatement';
 import { useState, useEffect } from "react";
 
 export default function Home({ data }) {
@@ -39,8 +41,19 @@ export default function Home({ data }) {
           <Stats stats={data.stats} />
         </ScrollReveal>
 
-        {/* Stats → ExploreData */}
+        {/* Stats → Euphonia */}
         <SectionDivider variant="voiceflow" accent="#4285F4" height={100} />
+
+        {/* Project Euphonia Section */}
+        <EuphoniaSection />
+
+        {/* Euphonia → Mission */}
+        <SectionDivider variant="voiceflow" accent="#4285F4" height={120} />
+
+        {/* Mission Statement */}
+        <ScrollReveal variant="fadeUp" duration={1}>
+          <VisionStatement />
+        </ScrollReveal>
 
         {/* ExploreData — smooth reveal */}
         <ScrollReveal variant="fadeUp" duration={1} delay={0.1}>

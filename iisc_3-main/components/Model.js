@@ -51,21 +51,6 @@ export default function Model({ districtName, setPopup }) {
 
     const languages = Object.keys(data ?? {});
 
-    const getInitialLink = () => {
-        if (!data) return "";
-        const firstLanguage = data[languages[0]];
-
-        const maleData = getGenderData(firstLanguage, 'male');
-        const femaleData = getGenderData(firstLanguage, 'female');
-
-        if (maleData?.length > 0) {
-            return maleData[0].link;
-        } else if (femaleData?.length > 0) {
-            return femaleData[0].link;
-        }
-        return "";
-    };
-
     const [link, setLink] = useState(null);
 
     const options = {
@@ -75,164 +60,173 @@ export default function Model({ districtName, setPopup }) {
         aspectRatio: '16:9',
         autoplay: false,
         preload: 'auto',
-        controlBar: {
-            children: [
-                'playToggle',
-                'volumePanel',
-                'progressControl',
-                'currentTimeDisplay',
-                'timeDivider',
-                'durationDisplay',
-                'fullscreenToggle',
-            ]
-        }
     };
-
-    useEffect(() => {
-        if (link) {
-            console.log('Current link:', link);
-            // Test if link is accessible
-            fetch(link)
-                .then(response => {
-                    console.log('Link status:', response.status);
-                })
-                .catch(error => {
-                    console.error('Link error:', error);
-                });
-        }
-    }, [link]);
 
     if (!data) {
         return (
-            <>
-                {isVisible && (
-                    <span className={"text-red-500 font-bold"}>
-                        Data not available for this district {districtName}
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                <div className="bg-black/90 backdrop-blur-2xl border border-white/10 p-8 rounded-3xl text-center shadow-2xl">
+                    <span className="text-white/60 font-bold uppercase tracking-widest text-sm">
+                        Data pending for {districtName}
                     </span>
-                )}
-            </>
+                    <button 
+                        onClick={() => setPopup(false)}
+                        className="mt-6 block w-full py-3 bg-white/5 hover:bg-white/10 text-white rounded-xl transition-colors font-bold uppercase tracking-widest text-xs"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
         );
     }
 
     const handlePlayerReady = (player) => {
         playerRef.current = player;
-
-        player.on('waiting', () => {
-            videojs.log('player is waiting');
-        });
-
-        player.on('dispose', () => {
-            videojs.log('player will dispose');
-        });
     };
 
     return (
         <Transition.Root show={open} as={Fragment}>
-            <Dialog as="div" className="relative z-40"
-                onClose={() => {}}>
+            <Dialog as="div" className="relative z-50" onClose={() => {}}>
                 <Transition.Child
                     as={Fragment}
-                    enter="ease-out duration-300"
+                    enter="ease-out duration-500"
                     enterFrom="opacity-0"
                     enterTo="opacity-100"
-                    leave="ease-in duration-200"
+                    leave="ease-in duration-300"
                     leaveFrom="opacity-100"
                     leaveTo="opacity-0">
-                    <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+                    <div className="fixed inset-0 bg-black/95 transition-opacity backdrop-blur-md" />
                 </Transition.Child>
 
                 <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center sm:p-6 lg:p-8">
                         <Transition.Child
                             as={Fragment}
-                            enter="ease-out duration-300"
-                            enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                            enterTo="opacity-100 translate-y-0 sm:scale-100"
-                            leave="ease-in duration-200"
-                            leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                            leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-                            <Dialog.Panel className="relative rounded  transform overflow-hidden bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-7xl ">
-                                <div className={'flex bg-blue-900/90 py-2'}>
-                                    <Dialog.Title as="h3" className="text-xl font-semibold leading-6 font-sans  my-2 px-4">
-                                        Language Distribution in India
-                                    </Dialog.Title>
-                                    <XIcon className={"h-6 w-6 font-sans absolute text-white top-4 right-4 cursor-pointer"}
+                            enter="ease-out duration-500"
+                            enterFrom="opacity-0 translate-y-8 scale-95"
+                            enterTo="opacity-100 translate-y-0 scale-100"
+                            leave="ease-in duration-300"
+                            leaveFrom="opacity-100 translate-y-0 scale-100"
+                            leaveTo="opacity-0 translate-y-8 scale-95">
+                            <Dialog.Panel className="relative transform overflow-hidden bg-[#050505] border border-white/10 rounded-[2.5rem] text-left shadow-[0_0_100px_rgba(66,133,244,0.1)] transition-all sm:my-8 sm:w-full sm:max-w-6xl">
+                                
+                                {/* Header */}
+                                <div className="flex items-center justify-between p-8 border-b border-white/5 bg-white/[0.02]">
+                                    <div>
+                                        <span className="text-[10px] font-black uppercase tracking-[0.3em] text-[#4285F4] mb-2 block">Region Analysis</span>
+                                        <Dialog.Title as="h3" className="text-3xl font-black text-white tracking-widest uppercase">
+                                            {districtName} <span className="text-white/20">/</span> Dialect Atlas
+                                        </Dialog.Title>
+                                    </div>
+                                    <button
                                         onClick={() => {
                                             setOpen(false);
                                             setPopup(false);
-                                        }} />
+                                        }}
+                                        className="p-4 bg-white/5 hover:bg-white/10 rounded-full text-white/40 hover:text-white transition-all border border-white/10 group"
+                                    >
+                                        <XIcon className="h-6 w-6 group-hover:rotate-90 transition-transform duration-500" />
+                                    </button>
                                 </div>
-                                <div className={'p-8'}>
-                                    <p className={'text-xl text-zinc-600 font-thin '}>
-                                        Language distribution in <span className={"font-semibold"}>{districtName}</span>
-                                    </p>
-                                    <div className={'flex flex-col-reverse md:flex md:flex-row gap-4 my-4'}>
-                                        <div className=" overflow-y-auto h-auto">
-                                            <table className="min-w-full bg-white border-collapse shadow-md rounded">
-                                                <thead>
-                                                    <tr>
-                                                        <th className="border px-2 md:px-4 py-2 bg-gray-100 text-gray-700 font-semibold text-sm">
-                                                            Speaker Reported Language
-                                                        </th>
-                                                        <th className="border px-4 py-2 bg-gray-100 text-gray-700 font-semibold text-sm">
-                                                            Male Speaker
-                                                        </th>
-                                                        <th className="border px-4 py-2 bg-gray-100 text-gray-700 font-semibold text-sm">
-                                                            Female Speaker
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {languages?.map((language) => {
-                                                        const maleData = getGenderData(data[language], 'male');
-                                                        const femaleData = getGenderData(data[language], 'female');
-                                                        
-                                                        return (
-                                                            <tr key={language}>
-                                                                <td className="border px-1 md:px-4 py-1 text-xs text-zinc-600 md:text-sm ">
-                                                                    {language}
-                                                                </td>
-                                                                <td className="border px-2 py-1">
-                                                                    {maleData?.length > 0 ? (
-                                                                        <button
-                                                                            onClick={(e) => {
-                                                                                e.preventDefault();
-                                                                                setLink(maleData[maleData.length - 1]?.link);
-                                                                            }}
-                                                                            className="rounded bg-indigo-600 px-2 py-1 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                                                            Play Video
-                                                                        </button>
-                                                                    ) : (
-                                                                        <span className={"text-sm text-zinc-600"}>-</span>
-                                                                    )}
-                                                                </td>
-                                                                <td className="border px-2 py-2">
-                                                                    {femaleData?.length > 0 ? (
-                                                                        <button
-                                                                            onClick={(e) => {
-                                                                                e.preventDefault();
-                                                                                setLink(femaleData[femaleData.length - 1]?.link);
-                                                                            }}
-                                                                            className="flex justify-center rounded bg-indigo-600 px-2 py-1 text-xs md:text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                                                                            Play Video
-                                                                        </button>
-                                                                    ) : (
-                                                                        <span className={"text-xs text-zinc-600 sm:text-sm"}>-</span>
-                                                                    )}
-                                                                </td>
-                                                            </tr>
-                                                        );
-                                                    })}
-                                                </tbody>
-                                            </table>
+
+                                <div className="p-8 lg:p-12">
+                                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+                                        
+                                        {/* Left Side: Stats Table */}
+                                        <div className="lg:col-span-7 space-y-8">
+                                            <div className="bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden">
+                                                <table className="w-full text-left">
+                                                    <thead>
+                                                        <tr className="bg-white/[0.01] border-b border-white/5">
+                                                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white/40">Reported Dialect</th>
+                                                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white/40 text-center">Male</th>
+                                                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-white/40 text-center">Female</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody className="divide-y divide-white/5">
+                                                        {languages?.map((language) => {
+                                                            const maleData = getGenderData(data[language], 'male');
+                                                            const femaleData = getGenderData(data[language], 'female');
+                                                            
+                                                            return (
+                                                                <tr key={language} className="hover:bg-white/[0.02] transition-colors group">
+                                                                    <td className="px-6 py-5 text-sm font-bold text-white transition-colors group-hover:text-[#4285F4]">
+                                                                        {language}
+                                                                    </td>
+                                                                    <td className="px-6 py-5 text-center">
+                                                                        {maleData?.length > 0 ? (
+                                                                            <button
+                                                                                onClick={() => setLink(maleData[maleData.length - 1]?.link)}
+                                                                                className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-[#4285F4] transition-colors"
+                                                                            >
+                                                                                <div className="h-1.5 w-1.5 rounded-full bg-[#4285F4] animate-pulse" />
+                                                                                Listen
+                                                                            </button>
+                                                                        ) : <span className="text-white/10">—</span>}
+                                                                    </td>
+                                                                    <td className="px-6 py-5 text-center">
+                                                                        {femaleData?.length > 0 ? (
+                                                                            <button
+                                                                                onClick={() => setLink(femaleData[femaleData.length - 1]?.link)}
+                                                                                className="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-white/60 hover:text-[#4285F4] transition-colors"
+                                                                            >
+                                                                                <div className="h-1.5 w-1.5 rounded-full bg-[#4285F4] animate-pulse" />
+                                                                                Listen
+                                                                            </button>
+                                                                        ) : <span className="text-white/10">—</span>}
+                                                                    </td>
+                                                                </tr>
+                                                            );
+                                                        })}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            
+                                            <div className="flex gap-10 p-6 bg-[#4285F4]/5 rounded-3xl border border-[#4285F4]/20">
+                                                <div>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#4285F4]/60 block mb-1">Total Languages</span>
+                                                    <span className="text-2xl font-black text-white">{languages.length}</span>
+                                                </div>
+                                                <div className="h-12 w-px bg-[#4285F4]/20" />
+                                                <div>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-[#4285F4]/60 block mb-1">Status</span>
+                                                    <span className="text-2xl font-black text-white">Active</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className={'flex-1'}>
-                                            <div className="aspect-w-16 aspect-h-9 mx-auto">
-                                                <MediaPlayer
-                                                    url={link}
-                                                    options={options}
-                                                    onReady={handlePlayerReady}
-                                                />
+
+                                        {/* Right Side: Player */}
+                                        <div className="lg:col-span-5">
+                                            <div className="sticky top-0">
+                                                <div className="relative rounded-[2rem] overflow-hidden bg-black border border-white/10 shadow-2xl group">
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent pointer-events-none z-10" />
+                                                    <div className="p-1 px-1 aspect-video">
+                                                        <MediaPlayer
+                                                            url={link}
+                                                            options={options}
+                                                            onReady={handlePlayerReady}
+                                                        />
+                                                    </div>
+                                                    {!link && (
+                                                        <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-[#080808] z-20 transition-all group-hover:bg-[#0a0a0a]">
+                                                            <div className="h-20 w-20 rounded-full border-2 border-dashed border-white/10 flex items-center justify-center mb-6 animate-spin-slow">
+                                                                <svg className="h-8 w-8 text-white/20" fill="currentColor" viewBox="0 0 24 24">
+                                                                    <path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                                                                </svg>
+                                                            </div>
+                                                            <h4 className="text-lg font-bold text-white mb-2 tracking-tight">Select a dialect to explore</h4>
+                                                            <p className="text-white/40 text-sm max-w-[200px] font-medium leading-relaxed">
+                                                                Experience the authentic voices of {districtName}
+                                                            </p>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                
+                                                <div className="mt-8 p-6 bg-white/[0.02] border border-white/5 rounded-[2rem]">
+                                                     <p className="text-xs font-medium text-white/40 leading-relaxed italic">
+                                                        "Project Vaani captures the raw soul of regional dialects, ensuring no sound is lost to time."
+                                                     </p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

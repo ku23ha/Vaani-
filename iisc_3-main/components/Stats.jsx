@@ -146,18 +146,18 @@ function CoverageStatCard({ number, label, inView, delay }) {
 
   return (
     <div
-      className="premium-glass p-8 rounded-2xl group hover:border-[#4285F4]/30 transition-all duration-300"
+      className="stat-card-premium"
       style={{
         opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(25px)',
+        transform: inView ? 'translateY(0)' : 'translateY(10px)',
         transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
       }}
     >
       <div className="text-center">
-        <div className="text-3xl font-bold text-white group-hover:text-[#4285F4] transition-colors mb-2">
-          {countUp}{hasPlus && "+"}
+        <div className="stat-value">
+          {countUp}{hasPlus && <span className="text-[0.6em] opacity-50 ml-1">+</span>}
         </div>
-        <p className="text-sm font-medium text-white/50 tracking-wide uppercase">
+        <p className="stat-label">
           {label}
         </p>
       </div>
@@ -171,102 +171,76 @@ function DatasetDetails({ images, files, malePercent, femalePercent, inView, del
   const filesDisplay = files > 10000000 ? `${(files / 10000000).toFixed(1)} Cr` : formatForDisplay(String(files), false);
 
   return (
-    <div
-      className="flex flex-col sm:flex-row items-center justify-center gap-8 sm:gap-12"
-      style={{
-        opacity: inView ? 1 : 0,
-        transform: inView ? 'translateY(0)' : 'translateY(20px)',
-        transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
-      }}
-    >
-      {/* Images */}
-      <div className="text-center">
-        <div 
-          className="font-mono font-medium mb-1"
-          style={{ 
-            fontSize: '20px',
-            color: '#42A5F5',
-            fontWeight: 500
-          }}
-        >
-          {imagesCount}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div 
+        className="stat-card-premium"
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateY(0)' : 'translateY(10px)',
+          transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
+        }}
+      >
+        <div className="text-center">
+          <div className="stat-value">{imagesCount}</div>
+          <p className="stat-label">Visual Documentation</p>
         </div>
-        <p 
-          style={{ 
-            fontSize: '11px',
-            color: 'rgba(255, 255, 255, 0.7)',
-          }}
-        >
-          Visual Documentation
-        </p>
       </div>
 
-      {/* Divider */}
       <div 
-        className="hidden sm:block w-px h-8"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }}
-      />
-
-      {/* Files */}
-      <div className="text-center">
-        <div 
-          className="font-mono font-medium mb-1"
-          style={{ 
-            fontSize: '20px',
-            color: '#42A5F5',
-            fontWeight: 500
-          }}
-        >
-          {filesDisplay}
+        className="stat-card-premium"
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateY(0)' : 'translateY(10px)',
+          transition: `opacity 0.8s ease ${delay + 100}ms, transform 0.8s ease ${delay + 100}ms`,
+        }}
+      >
+        <div className="text-center">
+          <div className="stat-value">{filesDisplay}</div>
+          <p className="stat-label">Data Files Collected</p>
         </div>
-        <p 
-          style={{ 
-            fontSize: '11px',
-            color: 'rgba(255, 255, 255, 0.7)',
-          }}
-        >
-          Data Files Collected
-        </p>
       </div>
 
-      {/* Divider */}
       <div 
-        className="hidden sm:block w-px h-8"
-        style={{ backgroundColor: 'rgba(255, 255, 255, 0.08)' }}
-      />
-
-      {/* Gender Split */}
-      <div className="text-center" style={{ minWidth: '170px' }}>
-        <div className="flex items-center justify-between gap-4 mb-2">
-          <div className="text-left">
-            <div className="text-[13px] font-semibold" style={{ color: '#42A5F5' }}>
-              {malePercent.toFixed(0)}%
+        className="stat-card-premium"
+        style={{
+          opacity: inView ? 1 : 0,
+          transform: inView ? 'translateY(0)' : 'translateY(10px)',
+          transition: `opacity 0.8s ease ${delay + 200}ms, transform 0.8s ease ${delay + 200}ms`,
+        }}
+      >
+        <div className="text-center">
+          <div className="flex items-center justify-between gap-4 mb-4">
+            <div className="text-left">
+              <div className="text-2xl font-bold" style={{ color: '#42A5F5' }}>
+                {malePercent.toFixed(0)}%
+              </div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40">
+                Male
+              </div>
             </div>
-            <div className="text-[11px]" style={{ color: '#3D5A80' }}>
-              Male
+            <div className="text-right">
+              <div className="text-2xl font-bold" style={{ color: '#42A5F5' }}>
+                {femalePercent.toFixed(0)}%
+              </div>
+              <div className="text-[10px] uppercase tracking-widest text-white/40">
+                Female
+              </div>
             </div>
           </div>
-          <div className="text-right">
-            <div className="text-[13px] font-semibold" style={{ color: '#42A5F5' }}>
-              {femalePercent.toFixed(0)}%
-            </div>
-            <div className="text-[11px]" style={{ color: '#3D5A80' }}>
-              Female
-            </div>
-          </div>
-        </div>
-        <div
-          className="w-full h-2 rounded-full overflow-hidden"
-          style={{ backgroundColor: 'rgba(66, 133, 244, 0.15)' }}
-        >
           <div
-            style={{
-              width: `${malePercent}%`,
-              height: '100%',
-              backgroundColor: '#4285F4',
-              transition: 'width 0.6s ease',
-            }}
-          />
+            className="w-full h-2 rounded-full overflow-hidden"
+            style={{ backgroundColor: 'rgba(66, 133, 244, 0.15)' }}
+          >
+            <div
+              style={{
+                width: `${malePercent}%`,
+                height: '100%',
+                backgroundColor: '#4285F4',
+                transition: 'width 0.6s ease',
+              }}
+            />
+          </div>
+          <p className="stat-label mt-4">Gender Diversity</p>
         </div>
       </div>
     </div>

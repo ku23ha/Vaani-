@@ -247,37 +247,33 @@ const HomepageDataAndMaps = ({ data }) => {
                   <div 
                     key={elements.id} 
                     onClick={() => handleOnClickState(elements.id)}
-                    className="group bg-[#0A0A0A]/60 border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#111111]/90 rounded-2xl p-5 transition-all cursor-pointer backdrop-blur-sm shadow-xl shadow-black/50"
+                    className="group bg-black border border-white/5 hover:border-[#4285F4]/40 rounded-3xl p-8 transition-all cursor-pointer shadow-2xl relative overflow-hidden"
                   >
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="font-display font-bold text-xl text-white group-hover:text-[#4285F4] transition-colors">{elements.id}</h3>
-                      <span className="text-xs font-mono text-[#4285F4] uppercase tracking-widest bg-[#4285F4]/10 px-2.5 py-1 rounded-full border border-[#4285F4]/20 whitespace-nowrap">
-                        {numLangs} Lang{numLangs !== 1 && 's'}
-                      </span>
+                    <div className="flex justify-between items-center mb-8">
+                      <h3 className="font-black text-2xl text-white tracking-widest uppercase group-hover:text-[#4285F4] transition-colors">{elements.id}</h3>
+                      <div className="h-2 w-2 rounded-full bg-[#4285F4] animate-pulse shadow-[0_0_10px_#4285F4]" />
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Record (Hrs)</span>
-                        <span className="text-sm font-semibold text-white">{elements.total_duration_hrs.toFixed(2)}</span>
+                    <div className="grid grid-cols-2 gap-8">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-2">Duration</span>
+                        <span className="text-2xl font-black text-white">{elements.total_duration_hrs.toFixed(1)}<span className="text-[10px] text-white/40 ml-1">HRS</span></span>
                       </div>
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Speakers</span>
-                        <span className="text-sm font-semibold text-white">{elements.total_speakers}</span>
-                      </div>
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3 col-span-2 sm:col-span-1">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Transcript (Hrs)</span>
-                        <span className="text-sm font-semibold text-white">
-                           {elements.transcription_duration_state ? parseFloat(elements.transcription_duration_state).toFixed(2) : "0.00"}
-                        </span>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-2">Voices</span>
+                        <span className="text-2xl font-black text-white">{elements.total_speakers}</span>
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-white/5">
-                      <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-1">Languages Recorded</span>
-                      <p className="text-xs text-white/70 leading-relaxed max-w-[90%] truncate" title={elements.language_duration_string}>
-                        {elements.language_duration_string}
-                      </p>
+                    <div className="mt-8 pt-6 border-t border-white/5">
+                       <div className="flex flex-wrap gap-2">
+                          {elements.language_duration_string?.split(',').slice(0, 3).map(lang => (
+                            <span key={lang} className="text-[9px] font-black uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded-full text-white/60">
+                              {lang.split('(')[0].trim()}
+                            </span>
+                          ))}
+                          <span className="text-[9px] font-black uppercase tracking-widest text-[#4285F4] py-1.5">+ More</span>
+                       </div>
                     </div>
                   </div>
                 );
@@ -289,37 +285,30 @@ const HomepageDataAndMaps = ({ data }) => {
                   <div 
                     key={elements.id} 
                     onClick={() => hadleClickDistrict(elements.id)}
-                    className="group bg-[#0A0A0A]/60 border border-white/10 hover:border-[#4285F4]/50 hover:bg-[#111111]/90 rounded-2xl p-5 transition-all cursor-pointer backdrop-blur-sm shadow-xl shadow-black/50"
+                    className="group bg-black border border-white/5 hover:border-[#4285F4]/40 rounded-3xl p-8 transition-all cursor-pointer shadow-2xl relative overflow-hidden"
                   >
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="font-display font-bold text-xl text-white group-hover:text-[#4285F4] transition-colors">{elements.id}</h3>
-                      <span className="text-xs font-mono text-[#4285F4] uppercase tracking-widest bg-[#4285F4]/10 px-2.5 py-1 rounded-full border border-[#4285F4]/20 whitespace-nowrap">
-                        {elements.languageCount} Lang{elements.languageCount !== 1 && 's'}
-                      </span>
+                    <div className="flex justify-between items-center mb-8">
+                      <h3 className="font-black text-2xl text-white tracking-widest uppercase group-hover:text-[#4285F4] transition-colors">{elements.id}</h3>
+                      <div className="h-2 w-2 rounded-full bg-[#4285F4] animate-pulse shadow-[0_0_10px_#4285F4]" />
                     </div>
 
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Record (Hrs)</span>
-                        <span className="text-sm font-semibold text-white">{elements.duration_per_district_hrs.toFixed(2)}</span>
+                    <div className="grid grid-cols-2 gap-8">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-2">Duration</span>
+                        <span className="text-2xl font-black text-white">{elements.duration_per_district_hrs.toFixed(1)}<span className="text-[10px] text-white/40 ml-1">HRS</span></span>
                       </div>
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Speakers</span>
-                        <span className="text-sm font-semibold text-white">{elements.spks_per_district}</span>
-                      </div>
-                      <div className="flex flex-col bg-white/5 border border-white/5 rounded-xl p-3 col-span-2 sm:col-span-1">
-                        <span className="text-[10px] font-bold text-white/50 uppercase tracking-widest mb-1">Transcript (Hrs)</span>
-                        <span className="text-sm font-semibold text-white">
-                           {parseFloat(elements.transcription_duration).toFixed(2)}
-                        </span>
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-black text-white/30 uppercase tracking-[0.2em] mb-2">Speakers</span>
+                        <span className="text-2xl font-black text-white">{elements.spks_per_district}</span>
                       </div>
                     </div>
 
-                    <div className="mt-4 pt-3 border-t border-white/5">
-                      <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-1">Languages Recorded</span>
-                      <p className="text-xs text-white/70 leading-relaxed max-w-[90%] truncate" title={elements.language}>
-                        {elements.language}
-                      </p>
+                    <div className="mt-8 pt-6 border-t border-white/5">
+                       <div className="flex flex-wrap gap-2">
+                          <span className="text-[9px] font-black uppercase tracking-widest bg-white/5 px-3 py-1.5 rounded-full text-white/60">
+                            Explore Dialects
+                          </span>
+                       </div>
                     </div>
                   </div>
                 ))}

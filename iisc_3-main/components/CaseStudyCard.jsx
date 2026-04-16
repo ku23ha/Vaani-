@@ -29,23 +29,22 @@ export function CaseStudyCard({
   const allContent = [...basicContent, ...extendedContent]
 
   return (
-    <div className={`bg-white/5 border border-white/10 rounded-lg shadow-lg p-8 h-[500px] flex flex-col backdrop-blur-sm ${className}`}>
-      <div className="flex items-center gap-4 mb-4 flex-shrink-0">
+    <div className={`bg-white/5 border border-white/10 rounded-3xl shadow-2xl p-8 h-[600px] flex flex-col backdrop-blur-xl hover:border-[#4285F4]/30 transition-all duration-500 ${className}`}>
+      <div className="flex flex-col items-center gap-6 mb-8 flex-shrink-0">
         {companyLogo && (
-          <div className="flex-shrink-0">
-            <div className="w-16 h-16 flex items-center justify-center overflow-hidden">
+          <div className="flex-shrink-0 w-full flex justify-center">
+            <div className="relative h-20 w-48 transition-transform duration-500 hover:scale-105">
               <Image
                 src={companyLogo}
                 alt={`${companyName} logo`}
-                width={43}
-                height={43}
-                className="object-contain max-w-full max-h-full"
+                fill
+                className="object-contain"
               />
             </div>
           </div>
         )}
-        <div>
-          <h4 className="font-semibold text-white/70 text-sm uppercase tracking-wide">
+        <div className="text-center">
+          <h4 className="font-black text-white/30 text-[10px] uppercase tracking-[0.4em]">
             {companyName || "[Company Name]"}
           </h4>
         </div>

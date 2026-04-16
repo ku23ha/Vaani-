@@ -54,8 +54,8 @@ export default function VoiceSearchPrompt() {
   };
 
   return (
-    <div className="voice-prompt-container premium-glass border-[#4285F4]/30">
-      <div className="flex flex-col md:flex-row items-center gap-8">
+    <div className="voice-prompt-container premium-glass border-[#4285F4]/40 p-10 sm:p-16 relative z-10 shadow-2xl shadow-[#4285F4]/10">
+      <div className="flex flex-col md:flex-row items-center gap-12">
         {/* Left: Enhanced Mic Button */}
         <div className="relative group">
           <button 

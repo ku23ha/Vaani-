@@ -122,107 +122,108 @@ export function Header() {
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
-      <nav className={scrolled ? 'bg-black/80 backdrop-blur-md border-b border-[#4285F4]/20 transition-all duration-300' : 'bg-transparent transition-all duration-300'}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center h-24">
-            {/* Left: Vaani Logo (Icon + White Text) */}
-            <div className="flex-shrink-0 w-48">
+      <nav className={clsx(
+        'transition-all duration-500 border-b',
+        scrolled 
+          ? 'bg-black/90 backdrop-blur-xl border-white/10 py-4' 
+          : 'bg-transparent border-transparent py-6'
+      )}>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center justify-between">
+            {/* Left: Vaani Logo */}
+            <div className="flex-shrink-0 pl-2">
               <Link href="/" className="flex items-center group gap-3">
-                <div className="relative h-10 w-8 overflow-hidden">
+                <div className="relative h-10 w-9 overflow-hidden brightness-125 contrast-125">
                   <Image 
                     src={VaaniLogo} 
                     alt="Vaani Icon" 
                     fill
-                    className="object-cover object-[0%] transition-transform duration-300 group-hover:scale-110" 
+                    className="object-contain transition-transform duration-500 group-hover:scale-110" 
                     priority 
                   />
                 </div>
-                <span className="text-2xl font-bold text-white tracking-tight group-hover:text-[#4285F4] transition-colors duration-300">
+                <span className="text-2xl font-black text-[#FFFFFF] tracking-widest uppercase group-hover:text-[#4285F4] transition-colors duration-500">
                   Vaani
                 </span>
               </Link>
             </div>
 
-            {/* Top Search Bar (Premium) */}
-            <div className="hidden lg:flex flex-1 max-w-md mx-8">
-              <div className="top-search-bar w-full">
-                <svg className="w-5 h-5 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-                <input 
-                  type="text" 
-                  placeholder="Search languages, districts, or stories..." 
-                  className="top-search-input"
-                />
-              </div>
-            </div>
-
-            {/* Center: Desktop Nav (Enlarged and Uniform) */}
-            <div className="hidden md:flex flex-grow justify-center items-center gap-10">
+            {/* Center: Desktop Nav */}
+            <div className="hidden lg:flex items-center gap-12">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="relative text-lg font-bold text-white/90 hover:text-[#4285F4] transition-colors group tracking-wide whitespace-nowrap"
+                  className="text-sm font-bold text-white/70 hover:text-[#4285F4] transition-all tracking-widest uppercase relative group"
                 >
                   {link.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#4285F4] rounded-full transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-[#4285F4] transition-all group-hover:w-full" />
                 </Link>
               ))}
             </div>
 
-            {/* Right: Institutional Logos (Swapped and Transparent) */}
-            <div className="hidden md:flex flex-shrink-0 justify-end items-center gap-8 pl-10">
-              <div className="flex items-center gap-8 border-l border-white/10 pl-8 flex-shrink-0">
-                <Link href="https://www.iisc.ac.in/" target="_blank" className="hover:scale-110 transition-transform">
-                  <Image src={IIScLogo} alt="IISc" height={40} className="h-10 w-auto object-contain brightness-0 invert" />
-                </Link>
-                <Link href="https://artpark.in/" target="_blank" className="hover:scale-110 transition-transform">
-                  <Image src={ArtparkLogo} alt="Artpark" height={36} className="h-9 w-auto object-contain" />
-                </Link>
+            {/* Right: Global Search & Actions */}
+            <div className="hidden lg:flex items-center gap-8 pl-8 border-l border-white/10">
+              <div className="relative group">
+                <div className="flex items-center bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 transition-colors">
+                  <svg className="w-4 h-4 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                  </svg>
+                  <input 
+                    type="text" 
+                    placeholder="Global Search..." 
+                    className="bg-transparent border-none focus:ring-0 text-sm text-white placeholder:text-white/20 ml-2 w-32 focus:w-48 transition-all duration-500"
+                  />
+                </div>
               </div>
+              <Link
+                href="https://huggingface.co/datasets/ARTPARK-IISc/VAANI"
+                target="_blank"
+                className="bg-[#4285F4] hover:bg-[#1967D2] text-white text-xs font-black uppercase tracking-widest px-6 py-3 rounded-full transition-all shadow-lg shadow-[#4285F4]/20"
+              >
+                Download
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-white/70 hover:text-white hover:bg-white/10 transition-colors"
-                aria-label="Toggle menu"
+                className="p-2 text-white/70 hover:text-white transition-colors"
               >
-                {isOpen ? <XIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
+                {isOpen ? <XIcon className="h-7 w-7" /> : <MenuIcon className="h-7 w-7" />}
               </button>
             </div>
           </div>
         </div>
 
-        {/* Mobile Menu Overlay */}
+        {/* Mobile Menu */}
         <Transition
           show={isOpen}
           as={Fragment}
-          enter="transition ease-out duration-200"
-          enterFrom="opacity-0 translate-y-1"
+          enter="transition ease-out duration-300"
+          enterFrom="opacity-0 -translate-y-4"
           enterTo="opacity-100 translate-y-0"
-          leave="transition ease-in duration-150"
+          leave="transition ease-in duration-200"
           leaveFrom="opacity-100 translate-y-0"
-          leaveTo="opacity-0 translate-y-1"
+          leaveTo="opacity-0 -translate-y-4"
         >
-          <div className="md:hidden absolute top-20 left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/10 py-6 px-4 space-y-4">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-2xl border-b border-white/10 py-8 px-6 space-y-6">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block text-xl font-medium text-white/80 hover:text-[#4285F4] transition-colors px-4 py-2"
+                className="block text-2xl font-black text-white tracking-widest uppercase hover:text-[#4285F4] transition-colors"
               >
                 {link.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-white/10 px-4">
+            <div className="pt-6 border-t border-white/10">
               <Link
                 href="https://huggingface.co/datasets/ARTPARK-IISc/VAANI"
                 target="_blank"
-                className="block w-full text-center py-3 rounded-xl bg-[#4285F4] text-white font-bold"
+                className="block w-full text-center py-4 rounded-full bg-[#4285F4] text-white font-black uppercase tracking-widest text-sm shadow-xl"
               >
                 Download Data
               </Link>

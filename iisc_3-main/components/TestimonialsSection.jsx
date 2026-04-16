@@ -57,13 +57,13 @@ export const TestimonialsSection = () => {
               key={index} 
               className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 hover:border-[#4285F4]/50 rounded-2xl shadow-lg hover:shadow-[#4285F4]/20 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] backdrop-blur-sm"
             >
-              <div className="h-16 flex items-center justify-center mb-8 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
+              <div className="h-20 flex items-center justify-center mb-8 transition-all duration-500 transform group-hover:scale-110">
                 <Image
                   src={testimonial.logo}
                   alt={testimonial.companyName}
-                  width={150}
-                  height={50}
-                  className="object-contain max-h-full"
+                  width={180}
+                  height={60}
+                  className="object-contain max-h-full brightness-110"
                 />
               </div>
 

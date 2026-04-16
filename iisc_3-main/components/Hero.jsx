@@ -241,19 +241,19 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="flex flex-col items-center gap-16 max-w-4xl mx-auto relative z-10">
+      <div className="flex flex-col items-center gap-12 max-w-4xl mx-auto relative z-10">
         <h1 className="headline-hero">
           <span className="block text-white opacity-80 mb-2">Empowering India's</span>
           <span className="block text-gradient-accent tracking-tighter">Linguistic Sovereignty.</span>
         </h1>
 
-        <p className="hero-subheadline text-xl sm:text-2xl text-white/60 font-medium max-w-3xl leading-relaxed italic" style={{ textShadow: '0 0 40px rgba(0,0,0,1)' }}>
+        <p className="hero-subheadline text-xl sm:text-2xl text-white/60 font-medium max-w-3xl leading-relaxed italic mt-4" style={{ textShadow: '0 0 40px rgba(0,0,0,1)' }}>
           "31,000+ hours of authentic Indian speech across 109 languages. 
           The largest open-source dataset built for Bharat, by Bharat."
         </p>
 
         {/* CTA buttons with animation class */}
-        <div className="hero-cta flex flex-wrap items-center justify-center gap-4 mt-2">
+        <div className="hero-cta flex flex-wrap items-center justify-center gap-6 mt-10">
           <Link
             href="#Explore"
             className={`btn-primary shadow-lg shadow-[#42A5F5]/20 hover:text-white ${!isIdle ? '' : 'cta-breathe'}`}
