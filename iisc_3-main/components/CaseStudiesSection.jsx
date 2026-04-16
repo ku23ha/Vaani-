@@ -29,9 +29,9 @@ export function CaseStudiesSection() {
   const nextCaseStudy = caseStudiesData.length > 1 ? caseStudiesData[(currentIndex + 1) % caseStudiesData.length] : null
 
   return (
-    <section className="py-20">
+    <section className="py-20 bg-black">
       <Container>
-        <h2 className="font-display text-2xl tracking-tight text-slate-900 sm:text-3xl md:text-3xl text-center mb-16 font-bold">
+        <h2 className="font-display text-2xl tracking-tight text-white sm:text-3xl md:text-3xl text-center mb-16 font-bold">
           Case Studies
         </h2>
         
@@ -42,20 +42,20 @@ export function CaseStudiesSection() {
             <>
               <button
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow"
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-8 z-10 bg-white/10 border border-white/20 rounded-full p-3 shadow-lg hover:bg-white/20 transition-all"
                 aria-label="Previous case study"
               >
-                <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
               
               <button
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 z-10 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow"
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-8 z-10 bg-white/10 border border-white/20 rounded-full p-3 shadow-lg hover:bg-white/20 transition-all"
                 aria-label="Next case study"
               >
-                <svg className="w-6 h-6 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
@@ -78,8 +78,8 @@ export function CaseStudiesSection() {
                   onClick={() => goToSlide(index)}
                   className={`w-3 h-3 rounded-full transition-colors ${
                     index === currentIndex 
-                      ? 'bg-blue-600' 
-                      : 'bg-slate-300 hover:bg-slate-400'
+                      ? 'bg-[#4285F4]' 
+                      : 'bg-white/30 hover:bg-white/50'
                   }`}
                   aria-label={`Go to case study ${index + 1}`}
                 />

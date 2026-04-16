@@ -42,10 +42,10 @@ const testimonialsData = [
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-black border-b border-white/10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-4 font-display">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-display">
             Real World Impact
           </h2>
           <div className="w-24 h-1 bg-[#4285F4] mx-auto rounded-full opacity-80" />
@@ -55,7 +55,7 @@ export const TestimonialsSection = () => {
           {testimonialsData.map((testimonial, index) => (
             <div 
               key={index} 
-              className="group flex flex-col items-center p-8 bg-white border border-slate-100 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+              className="group flex flex-col items-center p-8 bg-white/5 border border-white/10 hover:border-[#4285F4]/50 rounded-2xl shadow-lg hover:shadow-[#4285F4]/20 hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] backdrop-blur-sm"
             >
               <div className="h-16 flex items-center justify-center mb-8 grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110">
                 <Image
@@ -74,16 +74,16 @@ export const TestimonialsSection = () => {
               </div>
 
               <div className="flex-grow mb-8 px-2">
-                <p className="text-slate-600 text-sm leading-relaxed italic text-center opacity-80 group-hover:opacity-100 transition-opacity">
+                <p className="text-white/70 text-sm leading-relaxed italic text-center opacity-80 group-hover:opacity-100 transition-opacity">
                   "{testimonial.quote}"
                 </p>
               </div>
 
-              <div className="text-center pt-6 border-t border-slate-50 w-full mt-auto">
-                <p className="font-bold text-slate-800 text-sm">
+              <div className="text-center pt-6 border-t border-white/10 w-full mt-auto">
+                <p className="font-bold text-white/90 text-sm">
                   {testimonial.personName}
                 </p>
-                <p className="text-slate-500 text-xs mt-1 font-medium">
+                <p className="text-white/50 text-xs mt-1 font-medium">
                   {testimonial.personRole}
                 </p>
               </div>

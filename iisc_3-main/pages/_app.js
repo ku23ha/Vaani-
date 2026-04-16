@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/indic-premium.css'
 import Head from "next/head";
 import setup from "../setup";
 import {wrapper} from "../store/store";

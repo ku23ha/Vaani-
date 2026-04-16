@@ -34,14 +34,6 @@ export default function Home({ data }) {
         <Hero />
         <IndicTransition />
 
-        {/* AI Playground */}
-        <ScrollReveal variant="fadeUp" duration={1}>
-          <AIPlayground />
-        </ScrollReveal>
-
-        {/* AI Playground -> Stats */}
-        <SectionDivider variant="voiceflow" colorFrom="#000000" colorTo="#000000" height={80} />
-
         {/* Stats — smooth fade reveal */}
         <ScrollReveal variant="fadeUp" duration={1} delay={0.1}>
           <Stats stats={data.stats} />

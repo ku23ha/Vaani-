@@ -29,7 +29,7 @@ export function Footer() {
   const [bottomRef, bottomInView] = useInView();
 
   return (
-    <footer className="relative overflow-hidden" style={{ background: 'transparent' }}>
+    <footer className="relative overflow-hidden bg-black/80 border-t border-white/10 backdrop-blur-md">
       {/* Waveform top border */}
       <WaveformDivider color="spectral" height={24} />
 

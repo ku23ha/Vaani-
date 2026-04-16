@@ -26,7 +26,7 @@ function Logo1() {
 
 export function CaseStudiesHeader() {
   return (
-    <header className="py-5">
+    <header className="py-5 bg-black/40 border-b border-white/10 backdrop-blur-md">
       <Container>
         <nav className="relative z-50 flex justify-between items-center">
           <div className="flex items-center">
@@ -40,7 +40,7 @@ export function CaseStudiesHeader() {
                   priority 
                 />
               </div>
-              <span className="text-2xl font-bold text-slate-900 tracking-tight">
+              <span className="text-2xl font-bold text-white tracking-tight">
                 Vaani
               </span>
             </Link>

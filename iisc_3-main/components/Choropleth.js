@@ -60,11 +60,11 @@ const jsonPath = (region) => `/maps/${region}.json`;
 
 
 const customColors = [
-    "rgba(66,165,245,0.1)",
-    "rgba(66,165,245,0.25)",
-    "rgba(66,165,245,0.4)",
-    "rgba(66,165,245,0.55)",
-    "rgba(66,165,245,0.7)"
+    "rgba(216, 191, 165, 0.2)",  // Light brown
+    "rgba(194, 156, 108, 0.4)",  // Medium brown
+    "rgba(135, 116, 92, 0.55)",  // Dark brown
+    "rgba(66, 133, 244, 0.65)",  // Blue
+    "rgba(25, 103, 210, 0.85)"   // Dark blue
 ];
 
 const Choropleth = memo(({

@@ -119,53 +119,19 @@ function HeroStatCard({ number, label, inView, delay }) {
 
   return (
     <div
-      className="relative rounded-2xl p-6"
+      className="stat-card-premium"
       style={{
-        background: '#0A0A0A',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(10px)',
         transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
       }}
     >
       <div className="text-center">
-        <div className="flex items-center justify-center gap-1 mb-3">
-          <span 
-            className="font-mono font-bold tracking-tight"
-            style={{ 
-              fontSize: 'clamp(32px, 4vw, 44px)',
-              color: '#4285F4',
-              fontWeight: 700,
-              lineHeight: 1.1
-            }}
-          >
-            {countUp}
-          </span>
-          {hasPlus && (
-            <span 
-              className="font-mono font-bold"
-              style={{ 
-                fontSize: 'clamp(24px, 3vw, 32px)',
-                color: 'rgba(66, 133, 244, 0.6)',
-                fontWeight: 700,
-                lineHeight: 1.1
-              }}
-            >
-              +
-            </span>
-          )}
+        <div className="stat-value">
+          {countUp}
+          {hasPlus && <span className="text-[0.6em] opacity-50 ml-1">+</span>}
         </div>
-        <p 
-          className="uppercase tracking-wider font-medium"
-          style={{ 
-            fontSize: '13px',
-            letterSpacing: '1.2px',
-            color: 'rgba(255, 255, 255, 0.7)',
-            lineHeight: 1.4,
-            marginTop: '8px'
-          }}
-        >
+        <p className="stat-label">
           {label}
         </p>
       </div>
@@ -180,52 +146,18 @@ function CoverageStatCard({ number, label, inView, delay }) {
 
   return (
     <div
-      className="group rounded-xl p-5 transition-all duration-300 hover:scale-[1.02]"
+      className="premium-glass p-8 rounded-2xl group hover:border-[#4285F4]/30 transition-all duration-300"
       style={{
-        background: '#0A0A0A',
-        border: '1px solid rgba(255, 255, 255, 0.08)',
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
         opacity: inView ? 1 : 0,
         transform: inView ? 'translateY(0)' : 'translateY(25px)',
-        transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms, transform 0.3s ease`,
+        transition: `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`,
       }}
     >
       <div className="text-center">
-        <div className="flex items-center justify-center gap-1 mb-3">
-          <span 
-            className="font-mono font-semibold"
-            style={{ 
-              fontSize: 'clamp(24px, 3vw, 32px)',
-              color: '#4285F4',
-              fontWeight: 600,
-              lineHeight: 1.1
-            }}
-          >
-            {countUp}
-          </span>
-          {hasPlus && (
-            <span 
-              className="font-mono font-semibold"
-              style={{ 
-                fontSize: 'clamp(18px, 2.5vw, 24px)',
-                color: 'rgba(66, 133, 244, 0.6)',
-                fontWeight: 600,
-                lineHeight: 1.1
-              }}
-            >
-              +
-            </span>
-          )}
+        <div className="text-3xl font-bold text-white group-hover:text-[#4285F4] transition-colors mb-2">
+          {countUp}{hasPlus && "+"}
         </div>
-        <p 
-          className="font-medium"
-          style={{ 
-            fontSize: '12px',
-            color: 'rgba(255, 255, 255, 0.7)',
-            lineHeight: 1.4,
-            marginTop: '4px'
-          }}
-        >
+        <p className="text-sm font-medium text-white/50 tracking-wide uppercase">
           {label}
         </p>
       </div>

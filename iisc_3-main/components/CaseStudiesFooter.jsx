@@ -9,7 +9,7 @@ const Building = () => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="w-6 h-6 text-zinc-600"
+      className="w-6 h-6 text-[#4285F4]"
     >
       <path
         strokeLinecap="round"
@@ -22,22 +22,22 @@ const Building = () => {
 
 export function CaseStudiesFooter() {
   return (
-    <footer className="bg-slate-50">
+    <footer className="bg-black/80 border-t border-white/10 backdrop-blur-md">
       <Container>
-        <div className="flex flex-col items-center border-t border-slate-400/10 py-10 sm:flex-row-reverse sm:justify-between text-zinc-600 ">
+        <div className="flex flex-col items-center py-10 sm:flex-row-reverse sm:justify-between text-white/70 ">
           <div>
-            <h2 className="font-medium">Contact Us</h2>
-            <p className="mt-2">
+            <h2 className="font-medium text-white">Contact Us</h2>
+            <p className="mt-2 text-white/60">
               We are always open to new ideas and collaborations. <br /> Feel
               free to reach out to us.
             </p>
             <div className="flex gap-4 mt-1">
-              <MailIcon className="h-5 w-5 text-zinc-600 mt-1" />
-              <span className="ml-1"> vaanicontact@gmail.com </span>
+              <MailIcon className="h-5 w-5 text-[#4285F4] mt-1" />
+              <span className="ml-1 text-white/70"> vaanicontact@gmail.com </span>
             </div>
             <div className="flex gap-4 mt-1">
-              <Building className="h-5 w-5 text-zinc-600 mt-1" />
-              <p className="mb-4 leading-relaxed">
+              <Building className="h-5 w-5 text-[#4285F4] mt-1" />
+              <p className="mb-4 leading-relaxed text-white/70">
                 <span className="block">SPIRE LAB, Room No. EE C 326</span>
                 <span className="block">
                   Department of Electrical Engineering

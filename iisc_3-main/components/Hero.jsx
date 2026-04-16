@@ -31,79 +31,52 @@ function HeroWaveform() {
     resize();
     window.addEventListener('resize', resize);
 
-    /* Wave layer definitions — Indian Flag Theme (Orange, White, Green) */
+    /* Neural Indic Waves — Saffron, White, Green */
     const layers = [
-      { freq: 0.003, amp: 45, speed: 0.012, color: 'rgba(255, 153, 51, 0.55)', width: 2.8 },  // Saffron/Orange
-      { freq: 0.005, amp: 30, speed: 0.018, color: 'rgba(255, 255, 255, 0.45)', width: 2.2 },  // White
-      { freq: 0.004, amp: 55, speed: 0.010, color: 'rgba(19, 136, 8, 0.35)', width: 2.0 },   // Green
-      { freq: 0.007, amp: 20, speed: 0.025, color: 'rgba(255, 153, 51, 0.40)', width: 1.6 },  // Saffron accent
-      { freq: 0.006, amp: 38, speed: 0.015, color: 'rgba(255, 255, 255, 0.30)', width: 1.8 },  // White accent
-      { freq: 0.009, amp: 15, speed: 0.030, color: 'rgba(19, 136, 8, 0.35)', width: 1.2 },    // Green ripple
-      { freq: 0.002, amp: 65, speed: 0.008, color: 'rgba(255, 255, 255, 0.20)', width: 1.5 },  // White breath
+      { freq: 0.002, amp: 60, speed: 0.010, color: 'rgba(255, 153, 51, 0.6)', width: 3.5, blur: 2 },
+      { freq: 0.004, amp: 40, speed: 0.015, color: 'rgba(255, 255, 255, 0.5)', width: 2.5, blur: 4 },
+      { freq: 0.003, amp: 80, speed: 0.008, color: 'rgba(19, 136, 8, 0.4)', width: 2.0, blur: 1 },
+      { freq: 0.006, amp: 30, speed: 0.020, color: 'rgba(255, 153, 51, 0.3)', width: 1.5, blur: 6 },
+      { freq: 0.005, amp: 55, speed: 0.012, color: 'rgba(255, 255, 255, 0.25)', width: 1.8, blur: 0 },
     ];
 
     const draw = () => {
       const W = canvas.clientWidth;
       const H = canvas.clientHeight;
-      const centerY = H * 0.48; // slightly above center
+      const centerY = H * 0.45;
 
       ctx.clearRect(0, 0, W, H);
 
-      layers.forEach((layer) => {
+      layers.forEach((layer, index) => {
+        ctx.save();
+        if (layer.blur > 0) ctx.filter = `blur(${layer.blur}px)`;
+        
         ctx.beginPath();
         ctx.strokeStyle = layer.color;
         ctx.lineWidth = layer.width;
         ctx.lineJoin = 'round';
         ctx.lineCap = 'round';
 
-        for (let x = 0; x <= W; x += 2) {
-          /* Amplitude envelope – bell curve that peaks in the center,
-             creating an audio-waveform silhouette */
-          const normalX = (x / W - 0.5) * 2; // -1 to 1
-          const envelope = Math.exp(-normalX * normalX * 2.5);
-
-          /* Gentle breathing pulse */
-          const breathe = 1 + 0.15 * Math.sin(time * 0.6 + layer.freq * 100);
-
-          /* Composite multi-harmonic wave for organic feel */
-          const y = centerY +
-            layer.amp * envelope * breathe * (
-              0.6 * Math.sin(x * layer.freq + time * layer.speed * 60) +
-              0.25 * Math.sin(x * layer.freq * 2.1 + time * layer.speed * 90 + 1) +
-              0.15 * Math.sin(x * layer.freq * 3.3 + time * layer.speed * 40 + 2.5)
+        for (let x = 0; x <= W; x += 1.5) {
+          const normalX = (x / W - 0.5) * 2;
+          const envelope = Math.exp(-normalX * normalX * 2.2);
+          
+          // Composite harmonics for "Neural" organic look
+          const y = centerY + 
+            layer.amp * envelope * (
+              0.5 * Math.sin(x * layer.freq + time * layer.speed * 60) +
+              0.3 * Math.sin(x * layer.freq * 2.3 + time * layer.speed * 90 + index) +
+              0.2 * Math.sin(x * layer.freq * 5.1 + time * layer.speed * 40 - index * 2)
             );
 
           if (x === 0) ctx.moveTo(x, y);
           else ctx.lineTo(x, y);
         }
-
         ctx.stroke();
+        ctx.restore();
       });
 
-      /* Subtle glow layer — re-draw the primary wave with a blur for radiance */
-      ctx.save();
-      ctx.filter = 'blur(8px)';
-      ctx.globalAlpha = 0.25;
-      ctx.beginPath();
-      ctx.strokeStyle = '#FFFFFF';
-      ctx.lineWidth = 4;
-      const primary = layers[0];
-      for (let x = 0; x <= W; x += 3) {
-        const normalX = (x / W - 0.5) * 2;
-        const envelope = Math.exp(-normalX * normalX * 2.5);
-        const breathe = 1 + 0.15 * Math.sin(time * 0.6 + primary.freq * 100);
-        const y = centerY +
-          primary.amp * envelope * breathe * (
-            0.6 * Math.sin(x * primary.freq + time * primary.speed * 60) +
-            0.25 * Math.sin(x * primary.freq * 2.1 + time * primary.speed * 90 + 1)
-          );
-        if (x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-      ctx.restore();
-
-      time += 0.016; // ~60fps timestep
+      time += 0.012;
       animId = requestAnimationFrame(draw);
     };
 
@@ -117,11 +90,7 @@ function HeroWaveform() {
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden="true">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        style={{ opacity: 0.9 }}
-      />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" />
     </div>
   );
 }
@@ -274,14 +243,13 @@ export function Hero() {
       {/* Content */}
       <div className="flex flex-col items-center gap-16 max-w-4xl mx-auto relative z-10">
         <h1 className="headline-hero">
-          <span className="block text-white">Every voice in India,</span>
-          <span className="block text-gradient-accent">Heard.</span>
+          <span className="block text-white opacity-80 mb-2">Empowering India's</span>
+          <span className="block text-gradient-accent tracking-tighter">Linguistic Sovereignty.</span>
         </h1>
 
-        {/* Subheadline with animation class */}
-        <p className="hero-subheadline text-lg sm:text-xl text-white/80 font-medium max-w-2xl leading-relaxed font-body" style={{ textShadow: '0 0 20px rgba(0,0,0,0.8)' }}>
-          Project Vaani is one of the world's largest open datasets of Indian speech 
-          31,000+ hours across 109 languages, capturing how India truly speaks.
+        <p className="hero-subheadline text-xl sm:text-2xl text-white/60 font-medium max-w-3xl leading-relaxed italic" style={{ textShadow: '0 0 40px rgba(0,0,0,1)' }}>
+          "31,000+ hours of authentic Indian speech across 109 languages. 
+          The largest open-source dataset built for Bharat, by Bharat."
         </p>
 
         {/* CTA buttons with animation class */}
