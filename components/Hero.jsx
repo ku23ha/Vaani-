@@ -1,9 +1,12 @@
+import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { gsap } from 'gsap';
 import IIScLogo from '../assets/IIScLogo.png';
 import ArtparkLogo from '../assets/ARTPARK.png';
 import GoogleLogo from '../assets/GoogleLogo.png';
 import BhasniLogo from '../assets/bhashini.png';
+import { Hero3D } from './Hero3D';
 
 function OrnamentSVG() {
   return (
@@ -35,38 +38,76 @@ function OrnamentSVG() {
 }
 
 export function Hero() {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".hero-content > *",
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          stagger: 0.2,
+          duration: 1.2,
+          ease: "power3.out",
+          delay: 0.3
+        }
+      );
+
+      gsap.fromTo(
+        ".hero-logos > *",
+        { opacity: 0, scale: 0.9 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          delay: 1.2
+        }
+      );
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="Home"
-      className="hero-gradient min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 text-center"
+      ref={containerRef}
+      className="hero-gradient min-h-screen flex flex-col items-center justify-center pt-28 pb-16 px-4 text-center relative overflow-hidden"
     >
-      <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
-        <OrnamentSVG />
-
-        <div className="inline-flex items-center gap-2 border border-[#212191]/30 rounded-full px-4 py-1.5 text-sm text-[#212191] bg-white/60 backdrop-blur-sm shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-[#212191] animate-pulse"></span>
-          India's Sovereign Language Dataset
+      <Hero3D />
+      <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto relative z-10 hero-content">
+        <div className="gsap-item">
+          <OrnamentSVG />
         </div>
 
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
+        <div className="gsap-item inline-flex items-center gap-2 border border-[#212191]/30 rounded-full px-4 py-1.5 text-sm text-[#212191] bg-white/60 backdrop-blur-sm shadow-sm">
+          <span className="w-2 h-2 rounded-full bg-[#212191] animate-pulse"></span>
+          India&apos;s Sovereign Language Dataset
+        </div>
+
+        <h1 className="gsap-item text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
           AI for all from India
         </h1>
 
-        <p className="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
+        <p className="gsap-item text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
           Built on grassroots data collection. Powered by 150,000+ hours of audio.<br />
-          Delivering India's linguistic diversity at scale.
+          Delivering India&apos;s linguistic diversity at scale.
         </p>
 
         <Link
           href="https://huggingface.co/datasets/ARTPARK-IISc/VAANI"
           target="_blank"
-          className="inline-flex items-center gap-2 text-base font-semibold text-white bg-gray-900 hover:bg-gray-700 transition-colors px-7 py-3 rounded-full shadow-md"
+          className="gsap-item inline-flex items-center gap-2 text-base font-semibold text-white bg-gray-900 hover:bg-gray-700 transition-colors px-7 py-3 rounded-full shadow-md"
         >
           Experience Vaani
         </Link>
       </div>
 
-      <div className="mt-24 w-full max-w-5xl mx-auto">
+      <div className="mt-24 w-full max-w-5xl mx-auto relative z-10 hero-logos">
         <p className="text-xs font-semibold tracking-widest text-gray-400 uppercase mb-8 text-center">
           India Builds with Vaani
         </p>
