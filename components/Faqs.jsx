@@ -7,7 +7,7 @@ import { useInView } from '../hooks/useInView';
 const faqs = [
   {
     question: 'Why is capturing the language landscape of India important?',
-    answer: `Capturing India's diverse language landscape is vital for an inclusive Digital India, as only 10% of the population speaks English. Existing language AI models may not meet the linguistic diversity of India, where languages blend continuously. Initiatives like the National Language Translation Mission and Project Vaani aim to collect authentic language data, addressing the limitations of biased language models.`,
+    answer: `Capturing India&apos;s diverse language landscape is vital for an inclusive Digital India, as only 10% of the population speaks English. Existing language AI models may not meet the linguistic diversity of India, where languages blend continuously. Initiatives like the National Language Translation Mission and Project Vaani aim to collect authentic language data, addressing the limitations of biased language models.`,
   },
   {
     question: 'Why is this data shown per district and not per language?',
@@ -120,14 +120,14 @@ export function Faqs() {
               </h2>
             </div>
             <p className="text-gray-500 max-w-xs text-sm leading-relaxed sm:text-right">
-              Can't find what you're looking for?{' '}
+              Can&apos;t find what you&apos;re looking for?{' '}
               <a
                 href="mailto:vaanicontact@gmail.com"
                 className="text-[#212191] font-semibold hover:underline"
               >
                 Email us
               </a>{' '}
-              — we'll get back to you.
+              — we&apos;ll get back to you.
             </p>
           </div>
         </div>
