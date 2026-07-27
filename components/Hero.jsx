@@ -45,7 +45,7 @@ export function Hero() {
 
         <div className="inline-flex items-center gap-2 border border-[#212191]/30 rounded-full px-4 py-1.5 text-sm text-[#212191] bg-white/60 backdrop-blur-sm shadow-sm">
           <span className="w-2 h-2 rounded-full bg-[#212191] animate-pulse"></span>
-          India's Sovereign Language Dataset
+          India&apos;s Sovereign Language Dataset
         </div>
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight text-gray-900 leading-tight">
@@ -54,7 +54,7 @@ export function Hero() {
 
         <p className="text-lg sm:text-xl text-gray-500 max-w-2xl leading-relaxed">
           Built on grassroots data collection. Powered by 150,000+ hours of audio.<br />
-          Delivering India's linguistic diversity at scale.
+          Delivering India&apos;s linguistic diversity at scale.
         </p>
 
         <Link

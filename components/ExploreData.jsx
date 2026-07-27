@@ -32,11 +32,11 @@ export function ExploreData({ data }) {
           </span>
           <div className="max-w-3xl">
             <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight leading-tight mb-5">
-              Explore India's<br />
+              Explore India&apos;s<br />
               <span className="text-[#212191]">Vernacular Vista</span> with Vaani
             </h2>
             <p className="text-gray-500 text-lg leading-relaxed">
-              Explore the linguistic diversity of India in a click. Our dataset is intended to be a treasure trove of speech data from across India's districts — a comprehensive overview emphasizing language variety, providing a unique glimpse into India's rich cultural tapestry.
+              Explore the linguistic diversity of India in a click. Our dataset is intended to be a treasure trove of speech data from across India&apos;s districts — a comprehensive overview emphasizing language variety, providing a unique glimpse into India&apos;s rich cultural tapestry.
             </p>
           </div>
         </div>
