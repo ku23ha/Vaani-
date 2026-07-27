@@ -120,14 +120,14 @@ export function Faqs() {
               </h2>
             </div>
             <p className="text-gray-500 max-w-xs text-sm leading-relaxed sm:text-right">
-              Can't find what you're looking for?{' '}
+              Can&apos;t find what you&apos;re looking for?{' '}
               <a
                 href="mailto:vaanicontact@gmail.com"
                 className="text-[#212191] font-semibold hover:underline"
               >
                 Email us
               </a>{' '}
-              — we'll get back to you.
+              — we&apos;ll get back to you.
             </p>
           </div>
         </div>

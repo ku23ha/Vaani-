@@ -118,7 +118,7 @@ export function Stats({ stats }) {
               Digital India is marching ahead inexorably. Digital interfaces and communications have become critical for access to information, entertainment, economic opportunities and even essential services such as healthcare.
             </p>
             <p>
-              Project Vaani, by IISc, Bangalore and ARTPARK, is capturing the true diversity of India's spoken languages to propel language AI technologies and content for an inclusive Digital India.
+              Project Vaani, by IISc, Bangalore and ARTPARK, is capturing the true diversity of India&apos;s spoken languages to propel language AI technologies and content for an inclusive Digital India.
             </p>
             <p>
               We expect to create data corpora of over 150,000 hours of speech, part of which will be transcribed in local scripts, while ensuring linguistic, educational, urban-rural, age, and gender diversity. These diligently collected and curated datasets of natural speech and text from about 1 million people across all 773 districts of India will be open-sourced.
